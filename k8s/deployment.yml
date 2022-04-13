@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testapi-aks-demo
+spec:
+  selector:
+    matchLabels:
+      app: testapi-aks-demo
+  template:
+    metadata:
+      labels:
+        app: testapi-aks-demo
+    spec:
+      containers:
+      - name: testapi-aks-demo
+        image: helloworld/aks-demo
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
